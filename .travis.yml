@@ -1,29 +1,25 @@
+dist: xenial
+sudo: required
 language: node_js
 node_js:
-  - v13
   - v12
-  - v10
-  - v8
-  - v6
-  - v4
+
+sudo: true
+services:
+  - postgresql
 
 before_script:
-  - psql -c 'create database poc;' -U postgres
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get --yes remove postgresql\*
-  - sudo apt-get install -y postgresql-12 postgresql-client-12
-  - sudo cp /etc/postgresql/{9.6,12}/main/pg_hba.conf
-  - sudo service postgresql restart 12
-
-addons:
-  postgresql: 12
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 env:
   global:
-    - PGUSER=postgres
+    - POSTGRES_USER=postgres
+    - POSTGRES_PORT=5432
+    - POSTGRES_DB=travis_ci_test
+    - NODE_ENV="test"
     - PGPORT=5432
+    - PGUSER=postgres
+    - CI=false
 
-services:
-  - postgresql
+cache:
+  npm: false

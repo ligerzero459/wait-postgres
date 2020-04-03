@@ -83,11 +83,11 @@ test('runWait', t => {
   })
 
   t.test('pass', tt => {
-    const host = process.env.CI ? 'postgres' : 'localhost'
+    const host = process.env.CI === true ? 'postgres' : 'localhost'
     const db = process.env.POSTGRES_DB || 'poc'
     const user = process.env.POSTGRES_USER || 'postgres'
     const password = process.env.POSTGRES_PASSWORD || ''
-    const port = 5432
+    const port = process.env.POSTGRES_PORT || 5432
     process.env.B_USER = user
     process.env.B_PASS = password
     process.env.B_NAME = db
