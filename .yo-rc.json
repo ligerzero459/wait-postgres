@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Ryan Mottley",
+      "authorEmail": "ligerzero459@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
