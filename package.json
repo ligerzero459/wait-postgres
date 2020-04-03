@@ -1,6 +1,6 @@
 {
   "name": "wait-postgres",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Small script to halt script execution until a Postgres DB is online",
   "homepage": "",
   "author": {
