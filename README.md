@@ -9,10 +9,26 @@ $ npm install --save wait-postgres
 
 ## Usage
 
-```js
-const waitPostgres = require('wait-postgres');
+```sh
+usage: wait [options]
 
-waitPostgres('Rainbow');
+default env variables:
+  DB_HOST                       database host (example: localhost)
+  DB_PORT                       database port
+  DB_USER                       database username
+  DB_PASSWORD                   database password
+  DB_NAME                       database name
+
+options:
+  -h, --help                    show help and usage
+  -v, --version                 show version
+  -r, --retries                 number of times to retry (default: 60)
+  -d, --delay                   retry delay milliseconds (default: 1000)
+  -u, --user                    db username env var (default DB_USER)
+  -p, --pass                    db password env var (default DB_PASSWORD)
+  -n, --name                    db name env var (default DB_NAME)
+  -P, --port                    db port env var (default DB_PORT)
+  -H, --host                    db host env var (default DB_HOST)
 ```
 ## License
 
