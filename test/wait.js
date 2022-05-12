@@ -15,7 +15,7 @@ const CONFIG = {
   host: 'B_HOST'
 }
 
-test('_getConfig', t => {
+test('_getConfig', async t => {
   t.throws(() => {
     delete process.env.B_USER
     wait._getConfig(CONFIG)
@@ -64,8 +64,8 @@ test('_getConfig', t => {
   })
 })
 
-test('runWait', t => {
-  t.test('fail', tt => {
+test('runWait', async t => {
+  await t.test('fail', async tt => {
     process.env.B_USER = 'root'
     process.env.B_PASS = 'biscuits'
     process.env.B_NAME = 'help'
@@ -82,7 +82,7 @@ test('runWait', t => {
     })
   })
 
-  t.test('pass', tt => {
+  await t.test('pass', async tt => {
     const host = process.env.CI === true ? 'postgres' : 'localhost'
     const db = process.env.POSTGRES_DB || 'poc'
     const user = process.env.POSTGRES_USER || 'postgres'

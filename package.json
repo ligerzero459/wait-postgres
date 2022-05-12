@@ -22,7 +22,8 @@
     "husky": "^3.0.9",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
-    "tap": "^14.10.7"
+    "semantic-release": "^19.0.2",
+    "tap": "^16.2.0"
   },
   "engines": {
     "npm": ">= 4.0.0"

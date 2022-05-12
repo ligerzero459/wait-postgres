@@ -3,6 +3,8 @@ sudo: required
 language: node_js
 node_js:
   - v12
+  - v14
+  - v16
 
 sudo: true
 services:
@@ -23,3 +25,23 @@ env:
 
 cache:
   npm: false
+
+jobs:
+  include:
+    # Define the release stage that runs semantic-release
+    - stage: release
+      node_js: lts/*
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+    - stage: npm release
+      node_js: lts/*
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        api_key: $NPM_API_KEY
+        on: deploy-npm-release
